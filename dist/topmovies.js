@@ -41,6 +41,7 @@ export default css.topmovies`
   a {
     color: inherit;
     text-decoration: none;
+    background: linear-gradient(112deg, rgba(194, 195, 132, 0.62) 33%, #fff 97%);
   }
 
   .title a {
