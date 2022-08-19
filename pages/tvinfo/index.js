@@ -13,6 +13,8 @@ const stringToURL = (tvId, media_type) => {
   return `${media_type}info?search=${tvId}`;
 };
 
+const Title = ({title}) => <h1 className="title">{title}</h1>;
+
 const Grid = ({ tvId }) => {
   const [data, setData] = useState(null);
   const [credits, setCredits] = useState(null);
@@ -41,7 +43,7 @@ const Grid = ({ tvId }) => {
   return (
     <div className="App">
       <div className="container">
-        <h1>{data.name}</h1>
+        <Title title={data.name}/>
         <img
           src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
           className="poster"
@@ -56,7 +58,7 @@ const Grid = ({ tvId }) => {
         </style>
       </div>
       <div className="container">
-        <h3 className="text-3xl font-bold underline">Cast:</h3>
+      <Title title="Cast :"/>
         <div className="grid">
           {credits.cast.slice(0, 10).map((item, key) => {
             return (
@@ -100,7 +102,7 @@ export default function Category({ props }) {
         <title>router.query.search</title>
       </Head>
       <main>
-        <h1>TV Show Info</h1>
+        <h1 className="title">TV Show Info</h1>
         <Grid tvId={router.query.search}></Grid>
       </main>
 

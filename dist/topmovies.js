@@ -38,10 +38,14 @@ export default css.topmovies`
     align-items: center;
   }
 
+  h1 {
+
+  }
+
   a {
     color: inherit;
     text-decoration: none;
-    background: linear-gradient(112deg, rgba(194, 195, 132, 0.62) 33%, #fff 97%);
+    background: radial-gradient(#C1C3CC 33%, #f2f7f2 97%);
   }
 
   .title a {
@@ -90,6 +94,16 @@ export default css.topmovies`
     margin-top: 3rem;
   }
 
+  .gridsearch {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width:50%;
+
+    max-width: 1000px;
+    margin-top: 3rem;
+  }
+
   .card {
     margin: 1rem;
     flex-basis: 15%;
@@ -125,12 +139,27 @@ export default css.topmovies`
   }
 
   .inputmovie {
+    width: 100%;
     border: 1px dotted blue;
     border-radius: 5px;
+    background: radial-gradient(#fff 33%, #f2f7f2 97%);
   }
+
+  .button {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    transition-duration: 0.4s;
+    background: radial-gradient(#C1C3CC 33%, #f2f7f2 97%);
+    width: 100%;
+    background-color: red;
+    
+  }
+
 
   .button1 {
     transition-duration: 0.4s;
+    background: radial-gradient(#C1C3CC 33%, #f2f7f2 97%);
   }
   
   .button1:hover {
@@ -146,6 +175,16 @@ export default css.topmovies`
 
   @media (max-width: 600px) {
     .grid {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .gridsearch {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .button {
       width: 100%;
       flex-direction: column;
     }

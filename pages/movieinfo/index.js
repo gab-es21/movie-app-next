@@ -11,6 +11,7 @@ const stringToURL = (movieId, media_type) => {
   ///results?search=
   return `${media_type}info?search=${movieId}`;
 };
+const Title = ({ title }) => <h1 className="title">{title}</h1>;
 
 const Grid = ({ movieId }) => {
   const [data, setData] = useState(null);
@@ -41,7 +42,7 @@ const Grid = ({ movieId }) => {
   return (
     <div className="App">
       <div className="container">
-        <h1>{data.title}</h1>
+        <Title title={data.title} />
         <img
           src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
           className="poster"
@@ -55,8 +56,9 @@ const Grid = ({ movieId }) => {
           {topmoviesStyles}
         </style>
       </div>
+
       <div className="container">
-        <h3>Cast:</h3>
+        <Title title="Cast :" />
         <div className="grid">
           {credits.cast.slice(0, 10).map((item, key) => {
             return (
@@ -77,13 +79,13 @@ const Grid = ({ movieId }) => {
               </Link>
             );
           })}
-          <style jsx global>
-            {globalStyles}
-          </style>
-          <style jsx topmovies>
-            {topmoviesStyles}
-          </style>
         </div>
+        <style jsx global>
+          {globalStyles}
+        </style>
+        <style jsx topmovies>
+          {topmoviesStyles}
+        </style>
       </div>
     </div>
   );
@@ -95,12 +97,15 @@ export default function Category({ props }) {
 
   return (
     <div className="container">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"></link>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+      ></link>
       <Head>
-        <title>router.query.search</title>
+        <title>{router.query.search}</title>
       </Head>
       <main>
-        <h1>Movie Info</h1>
+        <h1 className="title">Movie Info</h1>
         <Grid movieId={router.query.search}></Grid>
       </main>
 
@@ -108,13 +113,6 @@ export default function Category({ props }) {
         <Link href="/">
           <button>← Home</button>
         </Link>
-
-        <span class="icon-text">
-  <span className="icon">
-    <i className="fas fa-home"></i>
-  </span>
-  <span>Home</span>
-</span>
       </footer>
 
       <style jsx global>

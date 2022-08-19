@@ -14,6 +14,9 @@ const stringReplace = (movieName) => {
   return `${movieName}`.replaceAll("-", " ");
 };
 
+const Title = ({title}) => <h1 className="title">{title}</h1>;
+const Title2 = ({title}) => <h2 className="title">{title}</h2>;
+
 const Grid = ({ movieName, numberMovies = "5", media_type = "movie" }) => {
   //searchType
   const [data, setData] = useState(null);
@@ -33,13 +36,20 @@ const Grid = ({ movieName, numberMovies = "5", media_type = "movie" }) => {
   }, [movieName]);
   if (!data || !movieName) return <h2>Fetching data</h2>;
 
+
+  var data2 = data.results
+  .filter((element) => element.media_type == media_type)
+  .slice(0, numberMovies);
+
+  console.log("first",media_type,data2)
+
+  if (data2.length == 0) return <div><p>No Data Available</p></div>;
+
   return (
     <div className="App">
       <div className="grid">
-        {data.results
-          .filter((element) => element.media_type == media_type)
-          .slice(0, numberMovies)
-          .map((item, key) => {
+        {data2.map((item, key) => {
+            console.log("second",media_type,data);
             return (
               <Link
                 key={item.id}
@@ -92,12 +102,12 @@ export default function Category({ props }) {
         <title>Results {router.query.search}</title>
       </Head>
       <main>
-        <h1>Results about : {stringReplace(router.query.search)}</h1>
-        <h2>Movies:</h2>
+        <h1 className="title">Search results : {stringReplace(router.query.search)}</h1>
+        <Title title="Movies :"/>
         <Grid movieName={router.query.search} media_type="movie"></Grid>
-        <h2>TV Shows:</h2>
+        <Title title="TV Shows:"/>
         <Grid movieName={router.query.search} media_type="tv"></Grid>
-        <h2>People:</h2>
+        <Title title="People:"/>
         <Grid movieName={router.query.search} media_type="person"></Grid>
       </main>
 

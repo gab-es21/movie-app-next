@@ -50,7 +50,7 @@ html {
   /* 3 */
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
-  background: linear-gradient(342deg, rgba(194, 195, 132, 0.62) 33%, #fff 97%);
+  //background: linear-gradient(342deg, #C1C3CC 33%, #f2f7f2 97%);
 }
 
 /*
@@ -185,6 +185,11 @@ table {
 3. Remove default padding in all browsers.
 */
 
+button {
+  transition-duration: 0.4s;
+    background: radial-gradient(#C1C3CC 33%, #f2f7f2 97%);
+}
+
 button,
 input,
 optgroup,
@@ -213,6 +218,7 @@ Remove the inheritance of text transform in Edge and Firefox.
 button,
 select {
   text-transform: none;
+  
 }
 
 /*
@@ -224,12 +230,13 @@ button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
-  -webkit-appearance: button;
+  //-webkit-appearance: button;
   /* 1 */
-  background-color: transparent;
+  //background-color: transparent;
   /* 2 */
   background-image: none;
   /* 2 */
+  
 }
 
 /*

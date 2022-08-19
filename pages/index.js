@@ -4,14 +4,14 @@ import Link from "next/link";
 import globalStyles from "../dist/global.js";
 import topmoviesStyles from "../dist/topmovies.js";
 
-const MyButton = forwardRef(({ onClick, href, disabled }, ref) => {
+const MyButton = forwardRef(({ onClick, href, disabled, className }, ref) => {
   return (
     <button
-      className="button1"
       href={href}
       onClick={onClick}
       ref={ref}
       disabled={disabled}
+      className={className}
     >
       Search
     </button>
@@ -45,8 +45,14 @@ const Grid = () => {
 
   return (
     <div className="App">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"></link>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css"></link>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+      ></link>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css"
+      ></link>
       <div className="grid">
         {data.results.slice(0, 5).map((item, key) => {
           return (
@@ -96,17 +102,12 @@ export default function Home() {
         <Title />
 
         <h3>Trending Movies</h3>
-        <span className="icon-text">
-  <span className="icon">
-    <i className="fas fa-home"></i>
-  </span>
-  <span>Home</span>
-</span>
+
         <Grid />
 
         <h3 className="description">Find a Movie:</h3>
 
-        <div className="grid">
+        <div className="gridsearch">
           <input
             className="inputmovie"
             type="text"
@@ -116,22 +117,34 @@ export default function Home() {
             value={category}
           ></input>
           <br />
+          <br />
           <Link
-            className="button1"
             href={{
               pathname: "/results",
               query: { search: `${stringToSearch(category)}` },
             }}
             passHref
           >
-            <MyButton className="button1" disabled={category === ""} />
+            <button
+              className="button"
+              href={{
+                pathname: "/results",
+                query: { search: `${stringToSearch(category)}` },
+              }}
+              disabled={category === ""}
+            >
+              Search
+            </button>
           </Link>
-          <br />
         </div>
 
-        <div>
-          <p>Searching for: {category}</p>
-        </div>
+        {!category ? (
+          <div></div>
+        ) : (
+          <div>
+            <p>Searching for: {category}</p>
+          </div>
+        )}
       </main>
 
       <style jsx global>
